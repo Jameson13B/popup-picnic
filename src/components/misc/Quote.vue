@@ -1,6 +1,6 @@
 <template>
   <div class="quote">
-    <p class="content"><i class="material-icons">format_quote</i>Nothing's better then a picnic.<i class="material-icons">format_quote</i></p>
+    <p class="content"><i class="material-icons">format_quote</i>Nothing's better than a picnic.<i class="material-icons">format_quote</i></p>
     <p class="author">- Zooey Deschanel</p>
   </div>
 </template>
