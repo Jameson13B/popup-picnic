@@ -28,4 +28,12 @@ export default {
 .nav a.router-link-exact-active {
   color: hotpink;
 }
+@media (max-width: 600px) {
+  .nav {
+    padding: 25px 20px;
+  }
+  .nav a {
+    font-size: 1.25em;
+  }
+}
 </style>

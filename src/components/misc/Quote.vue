@@ -17,4 +17,13 @@
 .quote i {
   vertical-align: top;
 }
+@media (max-width: 600px) {
+  .quote .content {
+    font-size: 2.5em;
+    padding: 0 3px;
+  }
+  .quote .author {
+    font-size: 1.25em;
+  }
+}
 </style>

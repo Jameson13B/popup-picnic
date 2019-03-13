@@ -29,6 +29,6 @@ export default {
   z-index: -1;
 }
 .home .quote {
-  margin-top: 30vh;
+  margin-top: 35vh;
 }
 </style>
