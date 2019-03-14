@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style>
-.content {
+.schedule .content {
   height: 88%;
   width: 100%;
   position: absolute;
