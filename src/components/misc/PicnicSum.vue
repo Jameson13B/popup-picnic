@@ -1,6 +1,9 @@
 <template>
   <div class="picnic-sum">
-    <h2>{{ picnic.title }}</h2>
+    <h2 class="title">{{ picnic.title | snippet }}</h2>
+    <p class="description">{{ picnic.description }}</p>
+    <h5 class="location">@ the {{ picnic.location}}</h5>
+    <p class="date">{{ picnic.date | date }}</p>
   </div>
 </template>
 
@@ -10,9 +13,22 @@ export default {
   props: ["picnic"],
   data() {
     return {};
-  }
+  },
+  computed: {}
 };
 </script>
 
 <style>
+.picnic-sum {
+  max-width: 500px;
+  margin: 0 auto;
+  border: 4px solid #eee;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px #eee;
+}
+.picnic-sum .location {
+  text-transform: capitalize;
+}
 </style>
