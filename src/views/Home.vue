@@ -27,6 +27,8 @@ export default {
   top: 0;
   left: 0;
   z-index: -1;
+  background-image: url("../assets/image3.jpg");
+  background-size: cover;
 }
 .home .quote {
   margin-top: 35vh;

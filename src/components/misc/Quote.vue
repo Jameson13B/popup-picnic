@@ -6,6 +6,13 @@
 </template>
 
 <style>
+.quote {
+  background: rgba(238, 238, 238, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 15px;
+}
 .quote .content {
   font-size: 4em;
   max-width: 550px;

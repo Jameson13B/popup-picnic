@@ -26,7 +26,7 @@ export default {
 }
 
 .nav a.router-link-exact-active {
-  color: hotpink;
+  color: rgb(235, 2, 2);
 }
 @media (max-width: 600px) {
   .nav {
