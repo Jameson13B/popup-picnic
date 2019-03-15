@@ -2,17 +2,26 @@
   <div class="app">
     <Nav />
     <router-view/>
+    <!-- <button @click.prevent="login" id="login-btn">Login</button> -->
+    <div id="firebaseui-auth-container" class="auth-modal"></div>
   </div>
 
 </template>
 
 <script>
 import Nav from "@/components/layouts/Nav.vue";
+import { ui, uiConfig } from "@/firebase/init";
 
 export default {
   name: "App",
   components: {
     Nav
+  },
+  methods: {
+    login() {
+      ui.start("#firebaseui-auth-container", uiConfig);
+      ui.disableAutoSignIn();
+    }
   }
 };
 </script>
@@ -28,5 +37,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.auth-modal {
+  display: none;
+  background: #eee;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding-top: 60px;
+  top: 0;
+  left: 0;
+}
+.auth-modal li {
+  list-style-type: none;
 }
 </style>

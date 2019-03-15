@@ -9,12 +9,13 @@ import Quote from "@/components/misc/Quote";
 
 export default {
   name: "Home",
+  components: {
+    Quote
+  },
   data() {
     return {};
   },
-  components: {
-    Quote
-  }
+  methods: {}
 };
 </script>
 
