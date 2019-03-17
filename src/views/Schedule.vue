@@ -18,7 +18,7 @@
 
 <script>
 import axios from "axios";
-import PicnicSum from "@/components/misc/PicnicSum";
+import PicnicSum from "@/components/picnic-views/PicnicSum";
 import { ui, uiConfig } from "@/firebase/init";
 import firebase from "firebase";
 
