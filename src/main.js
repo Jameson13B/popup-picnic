@@ -11,7 +11,7 @@ Vue.filter("date", val => {
   val = moment(val).format("lll");
   return val;
 });
-Vue.filter("snippet", val => {
+Vue.filter("title", val => {
   if (!val || typeof val != "string") return "";
   val = val.slice(0, 20);
   return val;

@@ -1,6 +1,6 @@
 <template>
-  <div class="picnic-sum">
-    <h2 class="title">{{ picnic.title | snippet }}</h2>
+  <div class="picnic-sum" @click.prevent="viewProfile">
+    <h2 class="title">{{ picnic.title | title }}</h2>
     <p class="description">{{ picnic.description }}</p>
     <h5 class="location">@ the {{ picnic.location}}</h5>
     <p class="date">{{ picnic.date | date }}</p>
@@ -14,7 +14,14 @@ export default {
   data() {
     return {};
   },
-  computed: {}
+  methods: {
+    viewProfile() {
+      this.$router.push({
+        name: "ViewPicnic",
+        params: { id: this.picnic._id }
+      });
+    }
+  }
 };
 </script>
 
