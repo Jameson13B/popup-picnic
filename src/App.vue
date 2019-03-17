@@ -2,27 +2,19 @@
   <div class="app">
     <Nav />
     <router-view/>
-    <!-- <button @click.prevent="login" id="login-btn">Login</button> -->
-    <div id="firebaseui-auth-container" class="auth-modal"></div>
   </div>
 
 </template>
 
 <script>
 import Nav from "@/components/layouts/Nav.vue";
-import { ui, uiConfig } from "@/firebase/init";
 
 export default {
   name: "App",
   components: {
     Nav
   },
-  methods: {
-    login() {
-      ui.start("#firebaseui-auth-container", uiConfig);
-      ui.disableAutoSignIn();
-    }
-  }
+  methods: {}
 };
 </script>
 
