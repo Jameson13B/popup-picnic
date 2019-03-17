@@ -59,13 +59,14 @@ export default {
           });
       } else {
         this.user = null;
+        this.feedback = "Login to see Picnics";
       }
     });
+    // Get picnics from server
     axios
       .get("https://popup-picnic-server.herokuapp.com/picnics")
       .then(res => {
         this.picnics = res.data;
-        this.feedback = null;
       })
       .catch(() => {
         this.feedback = "Failed to load picnics. Refresh the page.";
