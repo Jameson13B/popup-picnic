@@ -1,8 +1,7 @@
 <template>
   <div class="picnic">
-    <div class="content">
-      <h2>Single Picnic View</h2>
-      <hr/>
+    <h2>Single Picnic View</h2>
+    <div v-if="user" class="content">
       <h2 class="title">{{ picnic.title | title }}</h2>
       <p class="description">{{ picnic.description }}</p>
       <h5 class="location">@ the {{ picnic.location}}</h5>
@@ -14,6 +13,7 @@
         <p v-if="!picnic.attendees[0]">Be the first to join!</p>
       </ul>
     </div>
+    <p class="feedback">{{ feedback }}</p>
     <!-- Button for login -->
     <div @click.prevent="login" id="login-btn" v-if="!user">Login</div>
     <!-- Button for logged in user -->
