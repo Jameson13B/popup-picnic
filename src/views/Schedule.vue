@@ -3,7 +3,9 @@
     <div class="content">
       <h2>Schedule</h2>
       <p v-if="feedback" class="feedback">{{ feedback }}</p>
-      <PicnicSum v-if="user" v-for="picnic in sortedPicnics" :picnic="picnic" :key="picnic._id" />
+      <div v-if="user">
+        <PicnicSum v-for="picnic in sortedPicnics" :picnic="picnic" :key="picnic._id" />
+      </div>
     </div>
     <!-- Button for login -->
     <div @click.prevent="login" id="login-btn" v-if="!user">Login</div>
@@ -65,7 +67,7 @@ export default {
         this.picnics = res.data;
         this.feedback = null;
       })
-      .catch(err => {
+      .catch(() => {
         this.feedback = "Failed to load picnics. Refresh the page.";
       });
   },
