@@ -7,6 +7,7 @@
       <ul class="picnics">
         <h4>Attending:</h4>
         <li v-for="picnic in user.picnics" :key="picnic">{{ picnic }}</li>
+        <p v-if="user.picnics">None currently attending</p>
       </ul>
       <div class="logout-btn" @click.prevent="logout">Logout</div>
     </div>
@@ -71,11 +72,13 @@ export default {
   border: 2px solid #eb0202;
   border-radius: 15px;
   width: 15%;
+  padding: 10px;
   margin: 0 auto 15px;
   cursor: pointer;
 }
 .profile .logout-btn:hover {
   background: #eb0202;
+  color: white;
 }
 .feedback {
   color: red;
