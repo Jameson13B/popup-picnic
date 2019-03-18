@@ -49,7 +49,7 @@ export const uiConfig = {
       // document.getElementById("login-btn").style.display = "inline-block";
       document.getElementById("firebaseui-auth-container").style.display =
         "none";
-      return true;
+      return false;
     },
     uiShown: function() {
       // The widget is rendered.

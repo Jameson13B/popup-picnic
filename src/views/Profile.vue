@@ -1,20 +1,17 @@
 <template>
-  <div class="picnic">
-    <h2>Single Picnic View</h2>
+  <div class="profile">
+    <h2>Profile</h2>
     <div v-if="user" class="content">
-      <h2 class="title">{{ picnic.title | title }}</h2>
-      <p class="description">{{ picnic.description }}</p>
-      <h5 class="location">@ the {{ picnic.location}}</h5>
-      <p class="date">{{ picnic.date | date }}</p>
-      <hr/>
-      <ul class="attendees">
-        <h3>Attendees:</h3>
-        <li v-for="(attendee, i) in picnic.attendees" :key="i">{{ attendee }}</li>
-        <p v-if="!picnic.attendees[0]">Be the first to join!</p>
+      <p>{{ user.name }}</p>
+      <p>{{ user.email }}</p>
+      <ul class="picnics">
+        <h4>Attending:</h4>
+        <li v-for="picnic in user.picnics" :key="picnic">{{ picnic }}</li>
       </ul>
+      <div class="logout-btn" @click.prevent="logout">Logout</div>
     </div>
-    <p class="feedback">{{ feedback }}</p>
-    <Auth :user="user" />
+    <Auth v-if="!user" :user="user" />
+    <p v-if="feedback" class="feedback">{{ feedback }}</p>
   </div>
 </template>
 
@@ -24,10 +21,9 @@ import axios from "axios";
 import Auth from "@/components/auth/Auth";
 
 export default {
-  name: "Picnic",
+  name: "Profile",
   data() {
     return {
-      picnic: null,
       user: null,
       feedback: null
     };
@@ -45,35 +41,41 @@ export default {
           })
           .then(res => {
             this.user = res.data;
+            this.feedback = null;
           })
           .catch(err => {
             this.feedback = err.message;
           });
       } else {
         this.user = null;
-        this.feedback = "Login to see Picnic Info";
+        this.feedback = "Login to see Picnics";
       }
     });
-    // Get picnic info from server
-    const id = this.$route.params.id;
-    axios
-      .get(`https://popup-picnic-server.herokuapp.com/picnics/${id}`)
-      .then(res => {
-        this.picnic = res.data;
-      })
-      .catch(() => {
-        this.feedback = "Failed to load picnic. Refresh the page.";
-      });
+  },
+  methods: {
+    logout() {
+      firebase.auth().signOut();
+    }
   }
 };
 </script>
 
 <style>
-.picnic .content {
+.profile .content {
   max-width: 768px;
   margin: 15px auto;
   border: 3px solid #eee;
   border-radius: 15px;
+}
+.profile .logout-btn {
+  border: 2px solid #eb0202;
+  border-radius: 15px;
+  width: 15%;
+  margin: 0 auto 15px;
+  cursor: pointer;
+}
+.profile .logout-btn:hover {
+  background: #eb0202;
 }
 .feedback {
   color: red;

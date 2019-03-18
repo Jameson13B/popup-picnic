@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import About from "./views/About.vue";
 import Schedule from "./views/Schedule.vue";
 import ViewPicnic from "./views/ViewPicnic.vue";
+import Profile from "./views/Profile.vue";
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/picnic/:id",
       name: "ViewPicnic",
       component: ViewPicnic
+    },
+    {
+      path: "/profile/:id",
+      name: "Profile",
+      component: Profile
     }
   ]
 });
