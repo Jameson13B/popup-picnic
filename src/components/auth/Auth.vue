@@ -4,6 +4,7 @@
     <div @click.prevent="login" id="login-btn" v-if="!user">Login</div>
     <!-- Button for logged in user -->
     <div v-if="user" @click.prevent="viewProfile" id="profile-btn">{{ user.name }}</div>
+    <div v-if="user" @click.prevent="viewProfile" id="profile-btn-mobile">{{ user.name | icon }}</div>
     <!-- Div for login modal -->
     <div id="firebaseui-auth-container" class="auth-modal"></div>
   </div>
@@ -72,5 +73,43 @@ export default {
 #profile-btn:hover {
   background: #eb0202;
   color: #eee;
+}
+#profile-btn-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  #login-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    height: 35px;
+    width: 35px;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #eb0202;
+    font-weight: 500;
+  }
+  #profile-btn {
+    display: none;
+  }
+  #profile-btn-mobile {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    height: 45px;
+    width: 45px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 3px solid #eb0202;
+    font-weight: bold;
+    font-size: 1.25em;
+  }
 }
 </style>

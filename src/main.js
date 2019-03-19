@@ -16,6 +16,16 @@ Vue.filter("title", val => {
   val = val.slice(0, 20);
   return val;
 });
+Vue.filter("icon", val => {
+  if (!val || typeof val != "string") return "";
+  const names = val.split(" ");
+  val = names[0].substring(0, 1).toUpperCase();
+
+  if (names.length > 1) {
+    val += names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return val;
+});
 
 new Vue({
   router,
