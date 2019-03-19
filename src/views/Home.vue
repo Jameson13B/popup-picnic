@@ -30,8 +30,15 @@ export default {
   z-index: -1;
   background-image: url("../assets/background.jpg");
   background-size: cover;
+  background-position: center;
 }
 .home .quote {
   margin-top: 35vh;
+}
+@media (max-width: 600px) {
+  .home {
+    width: 80%;
+    padding: 0 10%;
+  }
 }
 </style>

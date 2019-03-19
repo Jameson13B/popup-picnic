@@ -102,4 +102,10 @@ export default {
     transform: rotate(360deg);
   }
 }
+@media (max-width: 600px) {
+  .schedule .content {
+    width: 80%;
+    padding: 0 10%;
+  }
+}
 </style>
