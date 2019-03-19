@@ -8,6 +8,7 @@
       <p class="date">{{ picnic.date | date }}</p>
       <hr/>
       <ul class="attendees">
+        <JoinBtn />
         <h3>Attendees:</h3>
         <li v-for="(attendee, i) in picnic.attendees" :key="i">{{ attendee }}</li>
         <p v-if="!picnic.attendees[0]">Be the first to join!</p>
@@ -22,6 +23,7 @@
 import firebase from "firebase";
 import axios from "axios";
 import Auth from "@/components/auth/Auth";
+import JoinBtn from "@/components/misc/JoinBtn";
 
 export default {
   name: "Picnic",
@@ -33,7 +35,8 @@ export default {
     };
   },
   components: {
-    Auth
+    Auth,
+    JoinBtn
   },
   created() {
     // set listern to check if user is logged in or not
@@ -78,5 +81,9 @@ export default {
 .feedback {
   color: red;
   font-weight: 700;
+}
+.attendees {
+  list-style-type: none;
+  padding: 0;
 }
 </style>
