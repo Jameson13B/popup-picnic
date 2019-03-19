@@ -6,6 +6,7 @@
       <div v-if="user">
         <PicnicSum v-for="picnic in sortedPicnics" :picnic="picnic" :key="picnic._id" />
       </div>
+      <div v-if="!picnics.length && !feedback" class="loader"></div>
     </div>
     <Auth :user="user" />
   </div>
@@ -82,5 +83,23 @@ export default {
 .feedback {
   color: red;
   font-weight: 700;
+}
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #eb0202;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
