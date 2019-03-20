@@ -40,8 +40,8 @@ export default {
   position: absolute;
   bottom: 15px;
   right: 15px;
-  height: 35px;
-  width: 35px;
+  height: 55px;
+  width: 55px;
   padding: 10px;
   border-radius: 50%;
   display: flex;
@@ -51,7 +51,7 @@ export default {
   border: 2px solid #eb0202;
   font-weight: 500;
 }
-#login-btn:hover {
+#btn:hover {
   background: #eb0202;
   color: #eee;
 }

@@ -86,4 +86,9 @@ export default {
   list-style-type: none;
   padding: 0;
 }
+@media (max-width: 600px) {
+  .picnic .content {
+    max-width: 90%;
+  }
+}
 </style>

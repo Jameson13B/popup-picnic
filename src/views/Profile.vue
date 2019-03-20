@@ -91,9 +91,6 @@ export default {
 @media (max-width: 600px) {
   .profile .content {
     max-width: 90%;
-    margin: 15px auto;
-    border: 3px solid #eee;
-    border-radius: 15px;
   }
   .profile .logout-btn {
     font-size: 0.9em;
