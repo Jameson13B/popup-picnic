@@ -7,6 +7,7 @@
         <PicnicSum v-for="picnic in sortedPicnics" :picnic="picnic" :key="picnic._id" />
       </div>
       <div v-if="!picnics.length && !feedback" class="loader"></div>
+      <p v-if="!user" class="feedback">Login to see Picnics</p>
     </div>
     <Auth :user="user" />
   </div>
@@ -56,7 +57,6 @@ export default {
           });
       } else {
         this.user = null;
-        this.feedback = "Login to see Picnics";
       }
     });
     // Get picnics from server
@@ -64,6 +64,7 @@ export default {
       .get("https://popup-picnic-server.herokuapp.com/picnics")
       .then(res => {
         this.picnics = res.data;
+        this.feedback = null;
       })
       .catch(() => {
         this.feedback = "Failed to load picnics. Refresh the page.";

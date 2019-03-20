@@ -79,37 +79,27 @@ export default {
 }
 @media (max-width: 600px) {
   #login-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 10px;
+    right: 10px;
     height: 35px;
     width: 35px;
-    padding: 10px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 2px solid #eb0202;
-    font-weight: 500;
   }
   #profile-btn {
     display: none;
   }
   #profile-btn-mobile {
+    display: flex;
     position: absolute;
     bottom: 5px;
     right: 5px;
-    height: 45px;
-    width: 45px;
-    border-radius: 0;
-    display: flex;
+    height: 35px;
+    width: 35px;
     align-items: center;
     justify-content: center;
+    border: 2px solid #eb0202;
+    border-radius: 50%;
+    font-weight: 500;
     cursor: pointer;
-    border: 3px solid #eb0202;
-    font-weight: bold;
-    font-size: 1.25em;
   }
 }
 </style>
