@@ -9,8 +9,8 @@
       <hr/>
       <ul class="attendees">
         <JoinBtn />
-        <h3>Attendees:</h3>
-        <li v-for="(attendee, i) in picnic.attendees" :key="i">{{ attendee }}</li>
+        <h3>Attendees: ({{ picnic.attendees.length }})</h3>
+        <li v-for="(attendee, i) in picnic.attendees" :key="i">{{ attendee.name }}</li>
         <p v-if="!picnic.attendees[0]">Be the first to join!</p>
       </ul>
     </div>
