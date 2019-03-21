@@ -1,14 +1,14 @@
 <template>
   <div class="picnic">
     <h2>Single Picnic View</h2>
-    <div v-if="user" class="content">
+    <div v-if="user && picnic" class="content">
       <h2 class="title">{{ picnic.title | title }}</h2>
       <p class="description">{{ picnic.description }}</p>
       <h5 class="location">@ the {{ picnic.location}}</h5>
       <p class="date">{{ picnic.date | date }}</p>
       <hr/>
       <ul class="attendees">
-        <JoinBtn />
+        <JoinBtn :joinPicnic="joinPicnic" />
         <h3>Attendees: ({{ picnic.attendees.length }})</h3>
         <li v-for="(attendee, i) in picnic.attendees" :key="i">{{ attendee.name }}</li>
         <p v-if="!picnic.attendees[0]">Be the first to join!</p>
@@ -24,6 +24,7 @@ import firebase from "firebase";
 import axios from "axios";
 import Auth from "@/components/auth/Auth";
 import JoinBtn from "@/components/misc/JoinBtn";
+import { setTimeout } from "timers";
 
 export default {
   name: "Picnic",
@@ -67,6 +68,42 @@ export default {
       .catch(() => {
         this.feedback = "Failed to load picnic. Refresh the page.";
       });
+  },
+  methods: {
+    checkAttend() {
+      if (!this.picnic.attendees.length) {
+        return false;
+      }
+      this.picnic.attendees.forEach(attendee => {
+        if (attendee._id === this.user._id) {
+          return false;
+        }
+      });
+      return true;
+    },
+    joinPicnic() {
+      if (!this.checkAttend()) {
+        axios
+          .patch(
+            `https://popup-picnic-server.herokuapp.com/picnics/join/${
+              this.picnic._id
+            }`,
+            {
+              _id: this.user._id
+            }
+          )
+          .then(res => {
+            this.picnic = res.data.picnic;
+            this.feedback = null;
+          })
+          .catch(err => {
+            this.feedback = err.message;
+          });
+      } else {
+        this.feedback = "Already attending";
+        setTimeout(() => (this.feedback = null), 1000);
+      }
+    }
   }
 };
 </script>

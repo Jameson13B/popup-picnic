@@ -6,8 +6,8 @@
       <p>{{ user.email }}</p>
       <ul class="picnics">
         <h4>Attending:</h4>
-        <li v-for="picnic in user.picnics" :key="picnic"><strong>{{ picnic.title }}</strong> - {{ picnic.date | date }}</li>
-        <p v-if="!user.picnics">None currently attending</p>
+        <li v-for="picnic in user.picnics" :key="picnic._id"><strong>{{ picnic.title }}</strong> - {{ picnic.date | date }}</li>
+        <p v-if="!user.picnics.length">None currently attending</p>
       </ul>
       <div class="logout-btn" @click.prevent="logout">Logout</div>
     </div>
