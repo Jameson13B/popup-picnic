@@ -16,6 +16,7 @@
     </div>
     <p class="feedback">{{ feedback }}</p>
     <Auth :user="user" />
+    <Signature />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import firebase from "firebase";
 import axios from "axios";
 import Auth from "@/components/auth/Auth";
 import JoinBtn from "@/components/misc/JoinBtn";
+import Signature from "@/components/misc/Signature.vue";
 import { setTimeout } from "timers";
 
 export default {
@@ -37,7 +39,8 @@ export default {
   },
   components: {
     Auth,
-    JoinBtn
+    JoinBtn,
+    Signature
   },
   created() {
     // set listern to check if user is logged in or not
@@ -49,6 +52,7 @@ export default {
           })
           .then(res => {
             this.user = res.data;
+            this.feedback = null;
           })
           .catch(err => {
             this.feedback = err.message;

@@ -13,6 +13,7 @@
     </div>
     <Auth v-if="!user" :user="user" />
     <p v-if="feedback" class="feedback">{{ feedback }}</p>
+    <Signature />
   </div>
 </template>
 
@@ -20,6 +21,7 @@
 import firebase from "firebase";
 import axios from "axios";
 import Auth from "@/components/auth/Auth";
+import Signature from "@/components/misc/Signature.vue";
 
 export default {
   name: "Profile",
@@ -30,7 +32,8 @@ export default {
     };
   },
   components: {
-    Auth
+    Auth,
+    Signature
   },
   created() {
     // set listern to check if user is logged in or not

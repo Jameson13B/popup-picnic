@@ -10,12 +10,14 @@
       <p v-if="!user" class="feedback">Login to see Picnics</p>
     </div>
     <Auth :user="user" />
+    <Signature />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import PicnicSum from "@/components/picnic-views/PicnicSum";
+import Signature from "@/components/misc/Signature.vue";
 import Auth from "@/components/auth/Auth";
 import firebase from "firebase";
 
@@ -23,7 +25,8 @@ export default {
   name: "Schedule",
   components: {
     PicnicSum,
-    Auth
+    Auth,
+    Signature
   },
   data() {
     return {

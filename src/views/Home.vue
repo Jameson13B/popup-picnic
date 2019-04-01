@@ -1,16 +1,19 @@
 <template>
   <div class="home">
     <Quote />
+    <Signature color=true />
   </div>
 </template>
 
 <script>
 import Quote from "@/components/misc/Quote";
+import Signature from "@/components/misc/Signature";
 
 export default {
   name: "Home",
   components: {
-    Quote
+    Quote,
+    Signature
   },
   data() {
     return {};
