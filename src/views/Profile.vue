@@ -6,7 +6,7 @@
       <p>{{ user.email }}</p>
       <ul class="picnics">
         <h4>Attending:</h4>
-        <li v-for="picnic in user.picnics" :key="picnic._id"><strong>{{ picnic.title }}</strong> - {{ picnic.date | date }}</li>
+        <li v-for="picnic in user.picnics" :key="picnic._id"><strong @click.prevent='viewPicnic(picnic._id)'>{{ picnic.title }}</strong> - {{ picnic.date | date }}</li>
         <p v-if="!user.picnics.length">None currently attending</p>
       </ul>
       <div class="logout-btn" @click.prevent="logout">Logout</div>
@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import firebase from "firebase";
-import axios from "axios";
-import Auth from "@/components/auth/Auth";
-import Signature from "@/components/misc/Signature.vue";
+import firebase from 'firebase';
+import axios from 'axios';
+import Auth from '@/components/auth/Auth';
+import Signature from '@/components/misc/Signature.vue';
 
 export default {
-  name: "Profile",
+  name: 'Profile',
   data() {
     return {
       user: null,
@@ -40,7 +40,7 @@ export default {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         axios
-          .get("https://popup-picnic-server.herokuapp.com/login", {
+          .get('https://popup-picnic-server.herokuapp.com/login', {
             headers: { Authorization: user.uid }
           })
           .then(res => {
@@ -52,13 +52,19 @@ export default {
           });
       } else {
         this.user = null;
-        this.feedback = "Login to see Picnics";
+        this.feedback = 'Login to see Picnics';
       }
     });
   },
   methods: {
     logout() {
       firebase.auth().signOut();
+    },
+    viewPicnic(id) {
+      this.$router.push({
+        name: 'ViewPicnic',
+        params: { id: id }
+      });
     }
   }
 };
@@ -90,6 +96,9 @@ export default {
 .picnics {
   list-style-type: none;
   padding: 0;
+}
+.picnics strong {
+  cursor: pointer;
 }
 @media (max-width: 600px) {
   .profile .content {

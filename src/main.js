@@ -1,24 +1,24 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import moment from "moment";
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import moment from 'moment';
 
 Vue.config.productionTip = false;
 
 // create global filter
-Vue.filter("date", val => {
-  if (!val || typeof val != "number") return "ERROR: Refresh Page";
-  val = moment(val).format("lll");
+Vue.filter('date', val => {
+  if (!val || typeof val != 'number') return 'ERROR: Refresh Page';
+  val = moment(val).format('lll');
   return val;
 });
-Vue.filter("title", val => {
-  if (!val || typeof val != "string") return "";
-  val = val.slice(0, 20);
+Vue.filter('title', val => {
+  if (!val || typeof val != 'string') return '';
+  val = val.slice(0, 25);
   return val;
 });
-Vue.filter("icon", val => {
-  if (!val || typeof val != "string") return "";
-  const names = val.split(" ");
+Vue.filter('icon', val => {
+  if (!val || typeof val != 'string') return '';
+  const names = val.split(' ');
   val = names[0].substring(0, 1).toUpperCase();
 
   if (names.length > 1) {
@@ -30,4 +30,4 @@ Vue.filter("icon", val => {
 new Vue({
   router,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app');

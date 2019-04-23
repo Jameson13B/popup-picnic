@@ -9,15 +9,15 @@
 
 <script>
 export default {
-  name: "PicnicSum",
-  props: ["picnic"],
+  name: 'PicnicSum',
+  props: ['picnic'],
   data() {
     return {};
   },
   methods: {
     viewProfile() {
       this.$router.push({
-        name: "ViewPicnic",
+        name: 'ViewPicnic',
         params: { id: this.picnic._id }
       });
     }
