@@ -6,7 +6,7 @@
       <p>{{ user.email }}</p>
       <ul class="picnics">
         <h4>Attending:</h4>
-        <li v-for="picnic in user.picnics" :key="picnic._id"><strong @click.prevent='viewPicnic(picnic._id)'>{{ picnic.title }}</strong> - {{ picnic.date | date }}</li>
+        <li v-for="picnic in user.picnics" :key="picnic._id"><strong @click.prevent='viewPicnic(picnic._id)'>{{ picnic.title }}</strong> - {{ picnic.date | shortDate }}</li>
         <p v-if="!user.picnics.length">None currently attending</p>
       </ul>
       <div class="logout-btn" @click.prevent="logout">Logout</div>
@@ -96,6 +96,12 @@ export default {
 .picnics {
   list-style-type: none;
   padding: 0;
+}
+.picnics h4 {
+  margin-bottom: 5px;
+}
+.picnics li {
+  padding: 10px 0;
 }
 .picnics strong {
   cursor: pointer;

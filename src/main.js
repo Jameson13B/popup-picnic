@@ -11,6 +11,11 @@ Vue.filter('date', val => {
   val = moment(val).format('lll');
   return val;
 });
+Vue.filter('shortDate', val => {
+  if (!val || typeof val != 'number') return 'ERROR: Refresh Page';
+  val = moment(val).format('ddd, MMMM Do h:mma');
+  return val;
+});
 Vue.filter('title', val => {
   if (!val || typeof val != 'string') return '';
   val = val.slice(0, 25);
