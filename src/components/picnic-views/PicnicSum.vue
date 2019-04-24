@@ -2,7 +2,7 @@
   <div class="picnic-sum" @click.prevent="viewProfile">
     <h2 class="title">{{ picnic.title | title }}</h2>
     <p class="description">{{ picnic.description }}</p>
-    <h5 class="location">@ the {{ picnic.location}}</h5>
+    <h5 class="location">@ {{ picnic.location}}</h5>
     <p class="date">{{ picnic.date | date }}</p>
   </div>
 </template>

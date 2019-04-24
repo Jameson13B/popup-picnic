@@ -4,7 +4,7 @@
     <div v-if="user && picnic" class="content">
       <h2 class="title">{{ picnic.title | title }}</h2>
       <p class="description">{{ picnic.description }}</p>
-      <h5 class="location">@ the {{ picnic.location}}</h5>
+      <h5 class="location">@ {{ picnic.location}}</h5>
       <p class="date">{{ picnic.date | date }}</p>
       <hr/>
       <ul class="attendees">
@@ -21,15 +21,15 @@
 </template>
 
 <script>
-import firebase from "firebase";
-import axios from "axios";
-import Auth from "@/components/auth/Auth";
-import JoinBtn from "@/components/misc/JoinBtn";
-import Signature from "@/components/misc/Signature.vue";
-import { setTimeout } from "timers";
+import firebase from 'firebase';
+import axios from 'axios';
+import Auth from '@/components/auth/Auth';
+import JoinBtn from '@/components/misc/JoinBtn';
+import Signature from '@/components/misc/Signature.vue';
+import { setTimeout } from 'timers';
 
 export default {
-  name: "Picnic",
+  name: 'Picnic',
   data() {
     return {
       picnic: null,
@@ -47,7 +47,7 @@ export default {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         axios
-          .get("https://popup-picnic-server.herokuapp.com/login", {
+          .get('https://popup-picnic-server.herokuapp.com/login', {
             headers: { Authorization: user.uid }
           })
           .then(res => {
@@ -59,7 +59,7 @@ export default {
           });
       } else {
         this.user = null;
-        this.feedback = "Login to see Picnic Info";
+        this.feedback = 'Login to see Picnic Info';
       }
     });
     // Get picnic info from server
@@ -70,7 +70,7 @@ export default {
         this.picnic = res.data;
       })
       .catch(() => {
-        this.feedback = "Failed to load picnic. Refresh the page.";
+        this.feedback = 'Failed to load picnic. Refresh the page.';
       });
   },
   methods: {
@@ -104,7 +104,7 @@ export default {
             this.feedback = err.message;
           });
       } else {
-        this.feedback = "Already attending";
+        this.feedback = 'Already attending';
         setTimeout(() => (this.feedback = null), 1000);
       }
     }
@@ -119,13 +119,16 @@ export default {
   border: 3px solid #eee;
   border-radius: 15px;
 }
-.feedback {
+.picnic .feedback {
   color: red;
   font-weight: 700;
 }
-.attendees {
+.picnic .attendees {
   list-style-type: none;
   padding: 0;
+}
+.picnic .location {
+  text-transform: capitalize;
 }
 @media (max-width: 600px) {
   .picnic .content {
